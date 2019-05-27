@@ -19,17 +19,8 @@ $user_set = find_all_non_admin_users();
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-        .starter-template {
-            padding: 3rem 1.5rem;
-            text-align: center;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -38,37 +29,11 @@ $user_set = find_all_non_admin_users();
 
     <div class="starter-template">
         <h1>Admin Dashboard</h1>
-        <p class="lead">Select faculty member to view contract calendars.</p>
-
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php while ($user = mysqli_fetch_assoc($user_set)) { ?>
-                <tr>
-                    <td>
-                        <?php echo h($user['first_name']); ?>
-                    </td>
-                    <td>
-                        <?php echo h($user['last_name']); ?>
-                    </td>
-                    <td>
-                        <?php echo h($user['email']); ?>
-                    </td>
-                    <td>
-                        <a href="user/view.php?user_id=<?php echo h(u($user['user_id'])); ?>" class="btn btn-primary btn-lg">View</a>
-                    </td>
-                </tr>
-
-            <?php } ?>
-            </tbody>
-        </table>
+        <ul>
+            <li><a href="user/index.php">View Contract Calendars</a></li>
+            <li><a href="contract-template/index.php">Contract Calendar Templates</a></li>
+            <li><a href="#">User Admin</a></li>
+        </ul>
     </div>
 
 </main><!-- /.container -->

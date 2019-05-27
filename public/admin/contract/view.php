@@ -26,15 +26,14 @@ $contract_day_set = find_contract_days_by_contract_id($contract_id);
 $contract_template_day_set = find_contract_template_days_by_contract_template_id($contract_template_id, $REQUIRED);
 $day_set = [];
 
+//contract day index
 $i = 0;
+//contract template day index
 $j = 0;
 
 $contract_template_day_count = mysqli_num_rows($contract_template_day_set);
 $contract_day_count = mysqli_num_rows($contract_day_set);
 
-//while($i < $contract_day_set_size && $j < $contract_template_day_set_size){
-
-//}
 ?>
 
 <!doctype html>
@@ -46,48 +45,74 @@ $contract_day_count = mysqli_num_rows($contract_day_set);
     <meta name="author" content="">
     <link rel="icon" href="">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>User Contract</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
     <!-- Bootstrap core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-        .starter-template {
-            padding: 3rem 1.5rem;
-            text-align: center;
-        }
-
-        .align-left{
-            text-align: left;
-        }
-        ul{
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+    <link href="../../css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
 <main role="main" class="container">
-
     <div class="starter-template">
         <h1><?php echo $user['first_name'] . " " . $user['last_name']; ?></h1>
 
         <p class="lead">Contract Day List for <?php echo $contract_template_date_start . " - " . $contract_template_date_end; ?></p>
 
-        <p><?php echo $contract_template_day_count; ?> <?php echo $contract_day_count; ?></p>
+        <p>Required Days: <?php echo $contract_template_day_count; ?>, Additional Days Selected: <?php echo $contract_day_count; ?></p>
 
-        <a href="../user/view.php?user_id=<?php echo h(u($user['user_id'])); ?>">Back to User</a>
+        <p class="align-left"><a href="../user/view.php?user_id=<?php echo h(u($user['user_id'])); ?>">Back to User Contracts List</a></p>
+        <ul>
+            <?php
+
+            while($i < $contract_day_count && $j < $contract_template_day_count){
+                mysqli_data_seek($contract_day_set, $i);
+                mysqli_data_seek($contract_template_day_set, $j);
+
+                $contract_day_row = mysqli_fetch_assoc($contract_day_set);
+                $contract_template_day_row = mysqli_fetch_assoc($contract_template_day_set);
+
+                if($contract_day_row['contract_day_date'] < $contract_template_day_row['contract_template_day_date']){
+                    echo "<li>" . date_fmt($contract_day_row['contract_day_date']) . "</li>";
+                    $i++;
+                }else{
+                    echo "<li><strong>" . date_fmt($contract_template_day_row['contract_template_day_date']) . "</strong></li>";
+                    $j++;
+                }
+            }
+
+            //finish printing the contract template days
+            if($i == $contract_day_count){
+                while($j < $contract_template_day_count){
+                    mysqli_data_seek($contract_template_day_set, $j);
+                    $contract_template_day_row = mysqli_fetch_assoc($contract_template_day_set);
+                    echo "<li><strong>" . date_fmt($contract_template_day_row['contract_template_day_date']) . "</strong></li>";
+                    $j++;
+                }
+            }
+            //finish printing the contract days
+            if($j == $contract_template_day_count){
+                while($i < $contract_day_count){
+                    mysqli_data_seek($contract_day_set, $i);
+                    $contract_day_row = mysqli_fetch_assoc($contract_day_set);
+                    echo "<li>" . date_fmt($contract_day_row['contract_day_date']) . "</li>";
+                    $i++;
+                }
+            }
+
+            ?>
+        </ul>
+
+        <h3><i>DEBUG</i></h3>
         <ul>
 
-        <?php while ($contract_template_day = mysqli_fetch_assoc($contract_template_day_set)) { ?>
+        <?php
+        mysqli_data_seek($contract_day_set, 0);
+        mysqli_data_seek($contract_template_day_set, 0);
+        while ($contract_template_day = mysqli_fetch_assoc($contract_template_day_set)) { ?>
         <li>
             <strong><?php echo  date($default_date_format, strtotime($contract_template_day['contract_template_day_date'])); ?></strong>
         </li>
@@ -98,6 +123,7 @@ $contract_day_count = mysqli_num_rows($contract_day_set);
         </li>
         <?php } ?>
         </ul>
+
     </div>
 
 </main><!-- /.container -->

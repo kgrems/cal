@@ -19,27 +19,14 @@ $contract_count = 0;
     <meta name="author" content="">
     <link rel="icon" href="">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>User Contracts</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
     <!-- Bootstrap core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
 
-    <style>
-        body {
-            padding-top: 5rem;
-        }
-        .starter-template {
-            padding: 3rem 1.5rem;
-            text-align: center;
-        }
-
-        .align-left{
-            text-align: left;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -50,7 +37,7 @@ $contract_count = 0;
         <h1><?php echo $user['first_name'] . " " . $user['last_name']; ?></h1>
         <p class="lead">Select contract to view.</p>
 
-        <a href="../dashboard.php" class="align-left">Back to Dashboard</a>
+        <p class="align-left"><a href="index.php">Back to Faculty</a></p>
 
         <table class="table table-striped">
             <thead>

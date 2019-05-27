@@ -60,7 +60,7 @@ function display_errors( $errors = array() ) {
 
 function display_error( $error ) {
 
-    echo "<div class=\"row\">";
+    echo "<div style=\"color: red;\" class=\"row\">";
 
     echo "<div class=\"col-25\">";
     echo "</div>";
@@ -76,4 +76,8 @@ function display_error( $error ) {
 
 function db_escape($connection, $string){
     return mysqli_real_escape_string($connection, $string);
+}
+
+function date_fmt($date){
+    return date('m/d/Y', strtotime($date));
 }
