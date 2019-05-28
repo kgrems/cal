@@ -15,9 +15,21 @@ ul{
     margin: 0;
 }
 
+
+
 .active-day:hover{
     background-color: #AFBBC7;
 }
+
+.delete-warning{
+    background-color: #fcf8e3;
+    color: #c82333;
+}
+
+.delete-warning p{
+    font-weight: bold;
+}
+
 
 @media (max-width:575px) {
     .display-4 {
@@ -38,3 +50,7 @@ ul{
         height: 14.2857vw;
     }
 }
+
+.crud-button{
+     width: 90px;
+ }

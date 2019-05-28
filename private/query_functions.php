@@ -161,3 +161,22 @@ function insert_contract_template( $contract_template ) {
         exit;
     }
 }
+
+function delete_contract_template( $contract_template_id ) {
+    global $db;
+
+    $sql = "DELETE FROM contract_template ";
+    $sql .= "WHERE contract_template_id='" . db_escape( $db, $contract_template_id ) . "' ";
+    $sql .= "LIMIT 1";
+    $result = mysqli_query( $db, $sql );
+
+    // For DELETE statements, $result is true/false
+    if ( $result ) {
+        return true;
+    } else {
+        // DELETE failed
+        echo mysqli_error( $db );
+        db_disconnect( $db );
+        exit;
+    }
+}

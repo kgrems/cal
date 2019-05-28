@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de9974ce-2e38-4a4e-a698-667f8f7e4903" name="Default Changelist" comment="Contract templates work.  Pickadate integration">
-      <change afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
+    <list default="true" id="de9974ce-2e38-4a4e-a698-667f8f7e4903" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/admin/contract-template/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cal.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private/query_functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/query_functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/admin/contract-template/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/contract-template/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/contract-template/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/contract-template/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -52,46 +59,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/private/functions.php">
+        <entry file="file://$PROJECT_DIR$/public/admin/contract-template/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="82" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
+            <state relative-caret-position="302">
+              <caret line="71" column="33" selection-start-line="71" selection-end-line="72" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/admin/contract-template/index.php">
+        <entry file="file://$PROJECT_DIR$/public/admin/contract-template/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/private/validation_functions.php">
+        <entry file="file://$PROJECT_DIR$/public/admin/contract-template/delete.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
-              <folding>
-                <element signature="e#7#26#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -108,12 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin/contract-template/new.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-275">
+            <state relative-caret-position="850">
               <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#1;n#form#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -121,7 +115,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin/user/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="950">
               <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
             </state>
           </provider>
@@ -130,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin/user/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="39" column="73" selection-end-line="82" selection-end-column="7" />
+            <state relative-caret-position="75">
+              <caret line="3" column="37" selection-start-line="3" selection-end-line="3" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -139,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/private/query_functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="150" column="67" selection-start-line="150" selection-start-column="67" selection-end-line="150" selection-end-column="67" />
+            <state relative-caret-position="280">
+              <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -148,8 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin/contract/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="114" />
+            <state relative-caret-position="475">
+              <caret line="25" column="115" selection-start-line="25" selection-end-line="25" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -171,24 +165,31 @@
         <option value="$PROJECT_DIR$/public/admin/index.php" />
         <option value="$PROJECT_DIR$/public/admin/contract/index.php" />
         <option value="$PROJECT_DIR$/public/calendar.php" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/admin/dashboard.php" />
         <option value="$PROJECT_DIR$/public/admin/user/view.php" />
         <option value="$PROJECT_DIR$/public/admin/user/index.php" />
         <option value="$PROJECT_DIR$/public/admin/contract/view.php" />
         <option value="$PROJECT_DIR$/private/validation_functions.php" />
-        <option value="$PROJECT_DIR$/private/query_functions.php" />
         <option value="$PROJECT_DIR$/public/admin/contract-template/new.php" />
         <option value="$PROJECT_DIR$/private/functions.php" />
         <option value="$PROJECT_DIR$/notes.txt" />
+        <option value="$PROJECT_DIR$/private/query_functions.php" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/admin/contract-template/index.php" />
+        <option value="$PROJECT_DIR$/public/admin/contract-template/delete.php" />
+        <option value="$PROJECT_DIR$/public/admin/contract-template/view.php" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="110" />
-    <option name="width" value="1578" />
-    <option name="height" value="903" />
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2910" />
+    <option name="width" value="1065" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -238,6 +239,12 @@
               <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cal" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cal" type="b2602c69:ProjectViewProjectNode" />
@@ -294,7 +301,8 @@
       <workItem from="1558231451343" duration="113000" />
       <workItem from="1558231573400" duration="9061000" />
       <workItem from="1558376049832" duration="13121000" />
-      <workItem from="1558536587702" duration="25764000" />
+      <workItem from="1558536587702" duration="26030000" />
+      <workItem from="1559068535723" duration="6158000" />
     </task>
     <task id="LOCAL-00001" summary="Many updates">
       <created>1558469081322</created>
@@ -310,20 +318,26 @@
       <option name="project" value="LOCAL" />
       <updated>1558469142308</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Delete contract template confirmation animation.">
+      <created>1559011879937</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559011879937</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56327000" />
+    <option name="totallyTimeSpent" value="62751000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="2910" y="0" width="1065" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10181237" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2039801" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" weight="0.32993197" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -337,6 +351,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3298969" />
+      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32993197" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -370,7 +385,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Many updates" />
     <MESSAGE value="Contract templates work.  Pickadate integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Contract templates work.  Pickadate integration" />
+    <MESSAGE value="Delete contract template confirmation animation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete contract template confirmation animation." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/private/db_credentials.php">
@@ -432,72 +448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/contract-template/view.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/user/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="39" column="73" selection-end-line="82" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/user/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/contract/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/contract/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/private/validation_functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
-          <folding>
-            <element signature="e#7#26#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/private/query_functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="150" column="67" selection-start-line="150" selection-start-column="67" selection-end-line="150" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/contract-template/new.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#1;n#form#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/pickadate/picker.date.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -509,11 +459,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/private/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
+        <state relative-caret-position="1700">
           <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -524,13 +471,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/private/validation_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3475">
+          <caret line="143" column="30" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
+          <folding>
+            <element signature="e#7#26#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/contract/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/contract-template/new.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/user/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/contract-template/delete.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/user/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="37" selection-start-line="3" selection-end-line="3" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/contract/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="115" selection-start-line="25" selection-end-line="25" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/private/query_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/contract-template/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="302">
+          <caret line="71" column="33" selection-start-line="71" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/contract-template/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
         </state>
       </provider>
     </entry>
