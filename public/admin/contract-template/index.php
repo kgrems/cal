@@ -69,6 +69,23 @@ $contract_template_set = find_all_contract_templates();
                     </td>
                     <td>
                         <a href="view.php?contract_template_id=<?php echo h(u($contract_template['contract_template_id'])); ?>" class="btn btn-primary btn-lg">View</a>
+                        <a data-toggle="collapse" href="#delete-collapse<?php echo h(u($contract_template['contract_template_id'])); ?>" class="btn btn-danger btn-lg">Delete</a>
+
+                    </td>
+                </tr>
+                <tr class="collapse" id="delete-collapse<?php echo h(u($contract_template['contract_template_id'])); ?>">
+                    <td colspan="5" >
+                    <div class="mark" >
+                        <div class="mark card card-body" style="background-color: #fcf8e3">
+                            <p>Are you sure you want to delete template number: <?php echo h(u($contract_template['contract_template_id'])); ?>?  This will also remove:
+                            </p>
+                            <ul>
+                                <li>All contracts based on this template.</li>
+                                <li>All contract days based on this template.</li>
+                                <li>All contract template days based on this template.</li>
+                            </ul>
+                        </div>
+                    </div>
                     </td>
                 </tr>
 

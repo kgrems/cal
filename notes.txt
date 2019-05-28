@@ -1,0 +1,6 @@
+Should contract templates be allowed to be adjusted after they are "live"?
+  Probably not, as the old paper contracts weren't able to do this.
+  If so, what should happen to contract days that are selected by users that then fall outside of the new contract
+  template range?
+
+What contract types are there for faculty and how many days are required for each?
