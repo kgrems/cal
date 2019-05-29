@@ -20,6 +20,15 @@ function find_all_contract_templates(){
     return $result;
 }
 
+function find_all_contract_template_day_types(){
+    global $db;
+    $sql = "SELECT * FROM contract_template_day_type ";
+    $sql .= "ORDER BY type ASC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+}
+
 function find_contract_by_id( $contract_id ) {
     global $db;
 
@@ -135,6 +144,17 @@ function validate_contract_template( $contract_template ) {
     return $errors;
 }
 
+function validate_contract_template_day( $contract_template_day ) {
+    $errors = [];
+
+    // date_start
+    if ( is_blank( $contract_template_day[ 'contract_template_day_date' ] ) ) {
+        $errors[ 'contract_template_day_date' ] = "Date cannot be blank.";
+    }
+
+    return $errors;
+}
+
 function insert_contract_template( $contract_template ) {
     global $db;
 
@@ -162,11 +182,58 @@ function insert_contract_template( $contract_template ) {
     }
 }
 
+function insert_contract_template_day($contract_template_day){
+    global $db;
+
+    $errors = validate_contract_template_day( $contract_template_day );
+    if ( !empty( $errors ) ) {
+        return $errors;
+    }
+
+    $sql = "INSERT INTO contract_template_day ";
+    $sql .= "(contract_template_day_date, contract_template_id, notes, contract_template_day_type_id ) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . db_escape( $db, $contract_template_day[ 'contract_template_day_date' ] ) . "',";
+    $sql .= "'" . db_escape( $db, $contract_template_day[ 'contract_template_id' ] ) . "',";
+    $sql .= "'" . db_escape( $db, $contract_template_day[ 'notes' ] ) . "',";
+    $sql .= "'" . db_escape( $db, $contract_template_day[ 'contract_template_day_type_id' ] ) . "'";
+    $sql .= ")";
+    $result = mysqli_query( $db, $sql );
+
+    if ( $result ) {
+        return true;
+    } else {
+        // INSERT failed
+        echo mysqli_error( $db );
+        db_disconnect( $db );
+        exit;
+    }
+}
+
 function delete_contract_template( $contract_template_id ) {
     global $db;
 
     $sql = "DELETE FROM contract_template ";
     $sql .= "WHERE contract_template_id='" . db_escape( $db, $contract_template_id ) . "' ";
+    $sql .= "LIMIT 1";
+    $result = mysqli_query( $db, $sql );
+
+    // For DELETE statements, $result is true/false
+    if ( $result ) {
+        return true;
+    } else {
+        // DELETE failed
+        echo mysqli_error( $db );
+        db_disconnect( $db );
+        exit;
+    }
+}
+
+function delete_contract_template_day($contract_template_day_id){
+    global $db;
+
+    $sql = "DELETE FROM contract_template_day ";
+    $sql .= "WHERE contract_template_day_id='" . db_escape( $db, $contract_template_day_id ) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query( $db, $sql );
 

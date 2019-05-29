@@ -68,7 +68,7 @@ $contract_template_set = find_all_contract_templates();
                         ?>
                     </td>
                     <td>
-                        <a href="view.php?contract_template_id=<?php echo h(u($contract_template['contract_template_id'])); ?>" class="btn btn-primary btn-lg crud-button">View</a>
+                        <a href="view.php?contract_template_id=<?php echo h(u($contract_template['contract_template_id'])); ?>&view_as=calendar" class="btn btn-primary btn-lg crud-button">View</a>
                         <a data-toggle="collapse" href="#delete-collapse<?php echo h(u($contract_template['contract_template_id'])); ?>" class="btn btn-danger btn-lg crud-button">Delete</a>
 
                     </td>
