@@ -9,6 +9,57 @@ $contract_template_day_type_set = find_all_contract_template_day_types();
 
 $view_as = $_GET[ 'view_as' ] ?? 'calendar';
 
+$min_date = $contract_template['date_start'];
+$max_date = $contract_template['date_end'];
+
+$min_year = explode("-", $min_date)[0];
+$min_month = explode("-", $min_date)[1];
+$min_day = explode("-", $min_date)[2];
+
+$max_year = explode("-", $max_date)[0];
+$max_month = explode("-", $max_date)[1];
+$max_day = explode("-", $max_date)[2];
+
+//todo need to prevent manually entering dates as parameters that are out of bounds
+if(isset($_GET["month"])){
+    $month = $_GET["month"];
+}else{
+    $month = $min_month;
+}
+
+if(isset($_GET["year"])){
+    $year = $_GET["year"];
+}else{
+    $year = $min_year;
+}
+
+//deal with calendar view
+$days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+$first_day_of_month = mktime(0,0,0,$month,1,$year);
+$first_day_of_first_week = date("w", $first_day_of_month);
+
+$next_month = $month;
+$next_year = $year;
+$prev_month = $month;
+$prev_year = $year;
+
+//calc next month
+if($month == 12){
+    $next_month = 1;
+    $next_year = $year + 1;
+}else{
+    $next_month++;
+}
+
+//calc prev month
+if($month == 1){
+    $prev_month = 12;
+    $prev_year = $year - 1;
+}else{
+    $prev_month--;
+}
+
+
 if ( is_post_request() ) {
 
     // Handle form values sent by new.php
@@ -121,6 +172,110 @@ if ( is_post_request() ) {
             <?php } ?>
             </tbody>
         </table>
+        <?php }elseif($view_as == 'calendar'){ ?>
+            <header>
+                <h4 class="display-4 mb-4 text-center">
+                    <!-- TODO need to account for years wrapping around -->
+                    <?php if($prev_month < $min_month && $year == $min_year){ ?>
+                        <button class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;-</button>
+                    <?php }else{ ?>
+                        <a href="view.php?contract_template_id=<?php echo $contract_template_id ?>&view_as=calendar&month=<?php echo $prev_month; ?>&year=<?php echo $prev_year; ?>" class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;-</a>
+                    <?php } ?>
+
+                    <?php echo date("F", mktime(0,0,0, $month, 1, $year)); ?> <?php echo $year; ?>
+
+                    <?php if($next_month > $max_month && $year == $max_year){ ?>
+                        <button class="btn btn-primary btn-lg" role="button" aria-disabled="true">-&gt;</button>
+                    <?php }else{ ?>
+                        <a href="view.php?contract_template_id=<?php echo $contract_template_id ?>&view_as=calendar&month=<?php echo $next_month; ?>&year=<?php echo $next_year; ?>" class="btn btn-primary btn-lg" role="button" aria-disabled="true">-&gt;</a>
+                    <?php } ?>
+                </h4>
+                <div class="row d-none d-sm-flex p-1 bg-dark text-white">
+                    <h5 class="col-sm p-1 text-center">Sun</h5>
+                    <h5 class="col-sm p-1 text-center">Mon</h5>
+                    <h5 class="col-sm p-1 text-center">Tue</h5>
+                    <h5 class="col-sm p-1 text-center">Wed</h5>
+                    <h5 class="col-sm p-1 text-center">Thu</h5>
+                    <h5 class="col-sm p-1 text-center">Fri</h5>
+                    <h5 class="col-sm p-1 text-center">Sat</h5>
+                </div>
+            </header>
+            <!-- Build the calendar -->
+            <div class="row border border-right-0 border-bottom-0">
+
+                <!-- Insert filler days (if any) from previous month -->
+                <?php
+                $row_count = 1;
+                $i = 1;
+                while($i <= $first_day_of_first_week){
+                    ?>
+                    <div style="background-color: #ecedee !important;" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+                        <h5 class="row align-items-center">
+                            <span class="date col-1"></span>
+                            <small class="col d-sm-none text-center text-muted">Sunday</small>
+                            <span class="col-1"></span>
+                        </h5>
+                        <p class="d-sm-none">No events</p>
+                    </div>
+                    <?php
+                    $i++;
+                    $row_count++;
+                }
+                ?>
+
+                <!-- Build current month -->
+                <?php
+                //$i = 1;
+                $j = 1;
+                while($j <= $days_in_month){ ?>
+
+                    <?php if($j < $min_day && $year == $min_year && $month == $min_month){ ?>
+                    <div style="background-color: #ecedee !important;" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+                        <h5 class="row align-items-center">
+                            <span class="date col-1"><?php echo $j; ?></span>
+                            <small class="col d-sm-none text-center text-muted">Wednesday</small>
+                            <span class="col-1"></span>
+                        </h5>
+                        <p class="d-sm-none">No events</p>
+                    </div>
+                    <?php }else{ ?>
+                        <div class="day active-day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+                            <h5 class="row align-items-center">
+                                <span class="date col-1"><?php echo $j; ?></span>
+                                <small class="col d-sm-none text-center text-muted">Wednesday</small>
+                                <span class="col-1"></span>
+                            </h5>
+                            <p class="d-sm-none">No events</p>
+                        </div>
+                    <?php } ?>
+                    <?php if($i % 7 == 0){ echo '<div class="w-100"></div>'; } ?>
+                    <?php
+                    if($row_count >= 7){
+                        $row_count = 1;
+                    }else{
+                        $row_count++;
+                    }
+                    $i++;
+                    $j++;
+                } ?>
+
+                <!-- Pad extra spaces at end of month -->
+                <?php
+                while($row_count <= 7){
+                    ?>
+                    <div style="background-color: #ecedee !important;" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+                        <h5 class="row align-items-center">
+                            <span class="date col-1"></span>
+                            <small class="col d-sm-none text-center text-muted">Sunday</small>
+                            <span class="col-1"></span>
+                        </h5>
+                        <p class="d-sm-none">No events</p>
+                    </div>
+                    <?php
+                    $row_count++;
+                }
+                ?>
+            </div>
         <?php } ?>
     </div>
 

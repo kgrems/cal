@@ -83,7 +83,7 @@
   $i = 1;
   while($i <= $first_day_of_first_week){
   ?>  
-  <div class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+  <div style="background-color: #ecedee !important;" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
       <h5 class="row align-items-center">
         <span class="date col-1"></span>
         <small class="col d-sm-none text-center text-muted">Sunday</small>
@@ -126,7 +126,7 @@
   <?php 
   while($row_count <= 7){
   ?>
-  <div class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+  <div style="background-color: #ecedee !important;" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
       <h5 class="row align-items-center">
         <span class="date col-1"></span>
         <small class="col d-sm-none text-center text-muted">Sunday</small>
