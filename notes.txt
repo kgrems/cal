@@ -4,3 +4,7 @@ Should contract templates be allowed to be adjusted after they are "live"?
   template range?
 
 What contract types are there for faculty and how many days are required for each?
+
+CREATE VIEW view_contract_template_day AS
+SELECT contract_template_day.contract_template_day_date, contract_template.date_start, contract_template.date_end, contract_template_day.contract_template_id, contract_template_day_type.contract_template_day_type_id, contract_template_day_type.type, contract_template_day.notes
+WHERE contract_template_day.contract_template_id = contract_template.contract_template_id AND contract_template_day.contract_template_day_type_id = contract_template_day_type.contract_template_day_type_id

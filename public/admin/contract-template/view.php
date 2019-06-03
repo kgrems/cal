@@ -3,9 +3,6 @@
 $contract_template_id = $_GET[ 'contract_template_id' ] ?? '1';
 $contract_template = find_contract_template_by_id($contract_template_id);
 
-$contract_template_day_set = find_contract_template_days_by_contract_template_id($contract_template_id);
-
-$contract_template_day_type_set = find_all_contract_template_day_types();
 
 $view_as = $_GET[ 'view_as' ] ?? 'calendar';
 
@@ -59,19 +56,23 @@ if($month == 1){
     $prev_month--;
 }
 
+$contract_template_day_set = find_contract_template_days_and_types_by_contract_template_id($contract_template_id);
+$contract_template_day_set_as_cal = find_contract_template_days_and_types_by_contract_template_id($contract_template_id, $month, $year);
+
+$contract_template_day_type_set = find_all_contract_template_day_types();
 
 if ( is_post_request() ) {
 
     // Handle form values sent by new.php
     $contract_template_day = [];
     $contract_template_day[ 'contract_template_day_date' ] = $_POST[ 'contract_template_day_date' ] ?? '';
-    $contract_template_day[ 'notes' ] = $_POST[ 'date_end' ] ?? '';
+    $contract_template_day[ 'notes' ] = $_POST[ 'notes' ] ?? '';
     $contract_template_day[ 'contract_template_id' ] = $_POST['contract_template_id'] ?? '';
     $contract_template_day[ 'contract_template_day_type_id' ] = $_POST['contract_template_day_type_id'] ?? '';
     $result = insert_contract_template_day( $contract_template_day );
     if ( $result === true ) {
         $new_id = mysqli_insert_id( $db );
-        redirect_to( url_for( 'admin/contract-template/view.php?contract_template_id=' . $contract_template_id . "&view_as=" . $view_as ) );
+        redirect_to( url_for( 'admin/contract-template/view.php?contract_template_id=' . $contract_template_id . "&view_as=" . $view_as . "&month=" . $month . "&year=" . $year ) );
     } else {
         $errors = $result;
     }
@@ -116,7 +117,7 @@ if ( is_post_request() ) {
         <h1>Contract Calendar Template</h1>
         <p class="lead"><strong><?php echo date_fmt($contract_template['date_start']); ?> - <?php echo date_fmt($contract_template['date_end']); ?></strong></p>
 
-        <p class="align-left"><a href="index.php">Back to Dashboard</a></p>
+        <p class="align-left"><a href="index.php">Back to Contract Templates</a></p>
         <p class="align-left"><a data-toggle="collapse" href="#new_template_day">New Contract Template Day</a></p>
         <div class="collapse border" id="new_template_day">
             <form  action="view.php?contract_template_id=<?php echo $contract_template_id; ?>&view_as=<?php echo $view_as; ?>" method="post" style="margin-bottom: 20px;">
@@ -164,7 +165,7 @@ if ( is_post_request() ) {
             <?php while ($contract_template_day = mysqli_fetch_assoc($contract_template_day_set)) { ?>
                 <tr>
                     <td><?php echo date_fmt($contract_template_day['contract_template_day_date']); ?></td>
-                    <td><?php echo $contract_template_day['contract_template_day_type_id']; ?></td>
+                    <td><?php echo $contract_template_day['type']; ?></td>
                     <td><?php echo $contract_template_day['notes']; ?></td>
                     <td><a href="../contract-template-day/delete.php?contract_template_day_id=<?php echo h(u($contract_template_day['contract_template_day_id'])); ?>&contract_template_id=<?php echo $contract_template_id; ?>&view_as=<?php echo $view_as; ?>" class="btn btn-danger btn-lg crud-button">Delete</a></td>
 
@@ -176,7 +177,7 @@ if ( is_post_request() ) {
             <header>
                 <h4 class="display-4 mb-4 text-center">
                     <!-- TODO need to account for years wrapping around -->
-                    <?php if($prev_month < $min_month && $year == $min_year){ ?>
+                    <?php if($month == $min_month && $year == $min_year){ ?>
                         <button class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;-</button>
                     <?php }else{ ?>
                         <a href="view.php?contract_template_id=<?php echo $contract_template_id ?>&view_as=calendar&month=<?php echo $prev_month; ?>&year=<?php echo $prev_year; ?>" class="btn btn-primary btn-lg" role="button" aria-disabled="true">&lt;-</a>
@@ -184,7 +185,7 @@ if ( is_post_request() ) {
 
                     <?php echo date("F", mktime(0,0,0, $month, 1, $year)); ?> <?php echo $year; ?>
 
-                    <?php if($next_month > $max_month && $year == $max_year){ ?>
+                    <?php if($month == $max_month && $year == $max_year){ ?>
                         <button class="btn btn-primary btn-lg" role="button" aria-disabled="true">-&gt;</button>
                     <?php }else{ ?>
                         <a href="view.php?contract_template_id=<?php echo $contract_template_id ?>&view_as=calendar&month=<?php echo $next_month; ?>&year=<?php echo $next_year; ?>" class="btn btn-primary btn-lg" role="button" aria-disabled="true">-&gt;</a>
@@ -227,9 +228,15 @@ if ( is_post_request() ) {
                 <?php
                 //$i = 1;
                 $j = 1;
-                while($j <= $days_in_month){ ?>
-
-                    <?php if($j < $min_day && $year == $min_year && $month == $min_month){ ?>
+                $day_count = 0;
+                while($j <= $days_in_month){
+                    mysqli_data_seek($contract_template_day_set_as_cal, $day_count);
+                    $row_pointer = mysqli_fetch_assoc($contract_template_day_set_as_cal);
+                    if(array_key_exists(2, explode("-",$row_pointer['contract_template_day_date']))) {
+                        $day = explode("-", $row_pointer['contract_template_day_date'])[2];
+                    }
+                ?>
+                    <?php if(($j < $min_day && $year == $min_year && $month == $min_month) || ($j > $max_day && $year == $max_year && $month == $max_month)){ ?>
                     <div style="background-color: #ecedee !important;" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
                         <h5 class="row align-items-center">
                             <span class="date col-1"><?php echo $j; ?></span>
@@ -239,13 +246,31 @@ if ( is_post_request() ) {
                         <p class="d-sm-none">No events</p>
                     </div>
                     <?php }else{ ?>
+                        <!--Within the contract template range.  Add the days here. -->
                         <div class="day active-day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
                             <h5 class="row align-items-center">
                                 <span class="date col-1"><?php echo $j; ?></span>
                                 <small class="col d-sm-none text-center text-muted">Wednesday</small>
                                 <span class="col-1"></span>
                             </h5>
-                            <p class="d-sm-none">No events</p>
+                            <p style="font-size: 0.80em"><?php
+                                if(isset($day)) {
+                                    if (ltrim($day, "0") == $j) {
+                                        echo $row_pointer['type'];
+                                        $day_count++;
+                                    }else{ ?>
+                            <form action="view.php?year=<?php echo $year; ?>&month=<?php echo $month; ?>&contract_template_id=<?php echo $contract_template_id; ?>&view_as=<?php echo $view_as; ?>" method="post">
+                                <input type="submit">
+                                <input type="hidden" name="contract_template_day_date" value="<?php echo $year . "-" . $month . "-" . $j; ?>">
+                                <input type="hidden" name="notes" value="">
+                                <input type="hidden" name="contract_template_id" value="<?php echo $contract_template_id; ?>">
+                                <!--TODO this doesn't seem right, but default to 1, or "Required" -->
+                                <input type="hidden" name="contract_template_day_type_id" value="1">
+                            </form>
+                            <?php }
+                            }
+                                ?>
+                            </p>
                         </div>
                     <?php } ?>
                     <?php if($i % 7 == 0){ echo '<div class="w-100"></div>'; } ?>

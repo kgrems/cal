@@ -93,6 +93,26 @@ function find_contract_template_days_by_contract_template_id($contract_template_
     return $result;
 }
 
+function find_contract_template_days_and_types_by_contract_template_id($contract_template_id, $month = -1, $year = -1){
+    global $db;
+
+    $sql = "SELECT * FROM view_contract_template_day ";
+    $sql .= "WHERE contract_template_id = '" . db_escape($db, $contract_template_id ) . "' ";
+
+    if($month != -1){
+        $sql .= "AND MONTH(contract_template_day_date) = '" . db_escape( $db, $month ) . "' ";
+    }
+
+    if($year != -1){
+        $sql .= "AND YEAR(contract_template_day_date) = '" . db_escape( $db, $year ) . "' ";
+    }
+    $sql .= "ORDER BY contract_template_day_date ASC";
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return  $result;
+}
+
 function find_contracts_by_user($user_id){
     global $db;
     $sql = "SELECT * FROM contract, contract_type, contract_template ";
