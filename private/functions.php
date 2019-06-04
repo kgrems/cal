@@ -81,3 +81,7 @@ function db_escape($connection, $string){
 function date_fmt($date){
     return date('m/d/Y', strtotime($date));
 }
+
+function date_fmt_lng($date){
+    return date('l, m/d/Y', strtotime($date));
+}

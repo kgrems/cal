@@ -164,7 +164,7 @@ if ( is_post_request() ) {
             <tbody>
             <?php while ($contract_template_day = mysqli_fetch_assoc($contract_template_day_set)) { ?>
                 <tr>
-                    <td><?php echo date_fmt($contract_template_day['contract_template_day_date']); ?></td>
+                    <td><?php echo date_fmt_lng($contract_template_day['contract_template_day_date']); ?></td>
                     <td><?php echo $contract_template_day['type']; ?></td>
                     <td><?php echo $contract_template_day['notes']; ?></td>
                     <td><a href="../contract-template-day/delete.php?contract_template_day_id=<?php echo h(u($contract_template_day['contract_template_day_id'])); ?>&contract_template_id=<?php echo $contract_template_id; ?>&view_as=<?php echo $view_as; ?>" class="btn btn-danger btn-lg crud-button">Delete</a></td>
@@ -260,7 +260,7 @@ if ( is_post_request() ) {
                                         $day_count++;
                                     }else{ ?>
                             <form action="view.php?year=<?php echo $year; ?>&month=<?php echo $month; ?>&contract_template_id=<?php echo $contract_template_id; ?>&view_as=<?php echo $view_as; ?>" method="post">
-                                <input type="submit">
+                                <button type="submit" class="btn btn-primary">Add</button>
                                 <input type="hidden" name="contract_template_day_date" value="<?php echo $year . "-" . $month . "-" . $j; ?>">
                                 <input type="hidden" name="notes" value="">
                                 <input type="hidden" name="contract_template_id" value="<?php echo $contract_template_id; ?>">
@@ -268,7 +268,16 @@ if ( is_post_request() ) {
                                 <input type="hidden" name="contract_template_day_type_id" value="1">
                             </form>
                             <?php }
-                            }
+                            }else{ ?>
+                                <form action="view.php?year=<?php echo $year; ?>&month=<?php echo $month; ?>&contract_template_id=<?php echo $contract_template_id; ?>&view_as=<?php echo $view_as; ?>" method="post">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <input type="hidden" name="contract_template_day_date" value="<?php echo $year . "-" . $month . "-" . $j; ?>">
+                                    <input type="hidden" name="notes" value="">
+                                    <input type="hidden" name="contract_template_id" value="<?php echo $contract_template_id; ?>">
+                                    <!--TODO this doesn't seem right, but default to 1, or "Required" -->
+                                    <input type="hidden" name="contract_template_day_type_id" value="1">
+                                </form>
+                            <?php }
                                 ?>
                             </p>
                         </div>

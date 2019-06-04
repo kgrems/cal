@@ -21,6 +21,11 @@ $user_set = find_all_non_admin_users();
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 
+    <style>
+        ul{
+            font-size: 1.4em;
+        }
+    </style>
 </head>
 
 <body>
