@@ -42,6 +42,7 @@ $contract_template_set = find_all_contract_templates();
                 <th></th>
             </tr>
             </thead>
+
             <tbody>
             <?php while ($contract_template = mysqli_fetch_assoc($contract_template_set)) {
                 ?>
