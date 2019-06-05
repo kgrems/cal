@@ -44,7 +44,6 @@ $contract_template_set = find_all_contract_templates();
             </thead>
             <tbody>
             <?php while ($contract_template = mysqli_fetch_assoc($contract_template_set)) {
-                $contract_template_faculty_set_count = mysqli_num_rows(find_contract_days_by_contract_id($contract['contract_id']));
                 ?>
                 <tr>
                     <td>
@@ -57,7 +56,7 @@ $contract_template_set = find_all_contract_templates();
                         <?php echo h($user['email']); ?>
                     </td>
                     <td>
-                        <a href="view.php?contract_id=<?php echo h(u($contract['user_id'])); ?>" class="btn btn-primary btn-lg">View</a>
+                        <a href="view.php?contract_id=<?php echo h(u($contract_template['contract_template_id'])); ?>" class="btn btn-primary btn-lg">View</a>
                     </td>
                 </tr>
 
