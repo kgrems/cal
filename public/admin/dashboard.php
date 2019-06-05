@@ -35,9 +35,9 @@ $user_set = find_all_non_admin_users();
     <div class="starter-template">
         <h1>Admin Dashboard</h1>
         <ul>
-            <li><a href="user/index.php">View Contract Calendars</a></li>
+            <li><a href="contract/index.php">View Contract Calendars</a></li>
             <li><a href="contract-template/index.php">Contract Calendar Templates</a></li>
-            <li><a href="#">User Admin</a></li>
+            <li><a href="user/index.php">User Admin</a></li>
         </ul>
     </div>
 

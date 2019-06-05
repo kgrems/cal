@@ -113,6 +113,19 @@ function find_contract_template_days_and_types_by_contract_template_id($contract
     return  $result;
 }
 
+//resume here
+function find_all_contract_templates_as_summary(){
+    global $db;
+
+    $sql = "SELECT * FROM view_contract_summary ";
+    $sql .= "WHERE is_admin = 0 ";
+    $sql .= "ORDER BY last_name ASC";
+    //echo $sql;
+    $result = mysqli_query( $db, $sql );
+    confirm_result_set( $result );
+    return $result;
+}
+
 function find_contracts_by_user($user_id){
     global $db;
     $sql = "SELECT * FROM contract, contract_type, contract_template ";
